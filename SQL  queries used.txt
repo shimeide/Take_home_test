@@ -1,0 +1,15 @@
+CREATE TABLE "HPI"."PUBLIC"."HPI" ("SRC" VARIANT);
+
+
+select
+src:frequency::string as frequency 
+, src:hpi_flavor::string as hpi_flavor 
+, src:hpi_type::string as hpi_type 
+, src:index_nsa::number(10,2) as index_nsa 
+, to_number(case when src:index_sa = '' then 0 else src:index_sa end, 10,2) as index_sa 
+, src:level::string as level 
+, src:period::number(10,0) as period 
+, src:place_id::string as place_id 
+, src:place_name::string as place_name 
+, src:yr::number(10,0) as year
+from "HPI"."PUBLIC"."HPI";
